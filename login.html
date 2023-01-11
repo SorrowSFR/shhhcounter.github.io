@@ -66,41 +66,41 @@
       </div>
     </div>
     <script>
-      let count1 = localStorage.getItem("count1") ? parseInt(localStorage.getItem("count1"), 10) : 0;
-      let count2 = localStorage.getItem("count2") ? parseInt(localStorage.getItem("count2"), 10) : 0;
-      const count1Element = document.getElementById("count1");
-      const count2Element = document.getElementById("count2");
-      
-      count1Element.innerHTML = count1;
-      count2Element.innerHTML = count2;
+  let count1 = localStorage.getItem("count1") ? parseInt(localStorage.getItem("count1"), 10) : 0;
+  let count2 = localStorage.getItem("count2") ? parseInt(localStorage.getItem("count2"), 10) : 0;
+  const count1Element = document.getElementById("count1");
+  const count2Element = document.getElementById("count2");
 
-      function increment(counter) {
-        if (counter === 1) {
-          count1++;
-          count1Element.innerHTML = count1;
-          localStorage.setItem("count1", count1);
-        } else if (counter === 2) {          count2++;
-          count2Element.innerHTML = count2;
-          localStorage.setItem("count2", count2);
-        }
+  count1Element.innerHTML = count1.toString();
+  count2Element.innerHTML = count2.toString();
+
+  function increment(counter) {
+    if (counter === 1) {
+      count1++;
+      count1Element.innerHTML = count1.toString();
+      localStorage.setItem("count1", count1);
+    } else if (counter === 2) {
+      count2++;
+      count2Element.innerHTML = count2.toString();
+      localStorage.setItem("count2", count2);
+    }
+  }
+
+  function decrement(counter) {
+    if (counter === 1) {
+      if (count1 > 0) {
+        count1--;
+        count1Element.innerHTML = count1.toString();
+        localStorage.setItem("count1", count1);
       }
-      
-      function decrement(counter) {
-        if (counter === 1) {
-          if(count1>0){
-            count1--;
-            count1Element.innerHTML = count1;
-            localStorage.setItem("count1", count1);
-          }
-        } else if (counter === 2) {
-          if(count2>0){
-            count2--;
-            count2Element.innerHTML = count2;
-            localStorage.setItem("count2", count2);
-          }
-        }
+    } else if (counter === 2) {
+      if (count2 > 0) {
+        count2--;
+        count2Element.innerHTML = count2.toString();
+        localStorage.setItem("count2", count2);
       }
-    </script>
-  </body>
+    }
+  }
+</script>
+</body>
 </html>
-
