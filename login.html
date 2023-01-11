@@ -1,71 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Counters</title>
-    <style>
-      /* Set the background color for the theme */
-      body {
-        background-color: #68A5CC;
-      }
+<head>
+  <title>Counters</title>
+  <style>
+    /* Set the background color for the theme */
+    body {
+      background-color: #68A5CC;
+    }
 
-      /* Style the counter boxes */
-      .counter-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-      .counter-box {
-        width: 200px;
-        height: 200px;
-        padding: 20px;
-        margin: 10px;
-        background-color: #F9CC9D;
-        color: #68A5CC;
-        text-align: center;
-        border-radius: 25px;
-      }
+    /* Style the counter boxes */
+    .counter-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .counter-box {
+      width: 200px;
+      height: 200px;
+      padding: 20px;
+      margin: 10px;
+      background-color: #F9CC9D;
+      color: #68A5CC;
+      text-align: center;
+      border-radius: 25px;
+    }
 
-      /* Style the heading */
-      h1 {
-        font-size: 30px;
-        color: #68A5CC;
-        margin-top: 50px;
-      }
+    /* Style the heading */
+    h1 {
+      font-size: 30px;
+      color: #68A5CC;
+      margin-top: 50px;
+    }
 
-      /* Style the buttons */
-      .counter-box button {
-        width: 60px;
-        height: 30px;
-        margin: 10px;
-        padding: 5px;
-        font-size: 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        cursor: pointer;
-        border-radius: 15px;
-      }
+    /* Style the buttons */
+    .counter-box button {
+      width: 60px;
+      height: 30px;
+      margin: 10px;
+      padding: 5px;
+      font-size: 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 15px;
+    }
 
-      .counter-box button.decrement {
-        background-color: #F44336;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="counter-container">
-      <div class="counter-box">
-        <h1>Counter 1: <span id="count1">0</span></h1>
-        <button onclick="increment(1)">+1</button>
-        <button class="decrement" onclick="decrement(1)">-1</button>
-      </div>
-      <div class="counter-box">
-        <h1>Counter 2: <span id="count2">0</span></h1>
-        <button onclick="increment(2)">+1</button>
-        <button class="decrement" onclick="decrement(2)">-1</button>
-      </div>
-    </div>
-    <script>
+    .counter-box button.decrement {
+      background-color: #F44336;
+    }
+  </style>
+</head>
+<body>
+<div class="counter-container">
+  <div class="counter-box">
+    <h1>Counter 1: <span id="count1">0</span></h1>
+    <button onclick="increment(1)">+1</button>
+    <button class="decrement" onclick="decrement(1)">-1</button>
+  </div>
+  <div class="counter-box">
+    <h1>Counter 2: <span id="count2">0</span></h1>
+    <button onclick="increment(2)">+1</button>
+    <button class="decrement" onclick="decrement(2)">-1</button>
+  </div>
+</div>
+
+<script>
   let count1 = localStorage.getItem("count1") ? parseInt(localStorage.getItem("count1"), 10) : 0;
   let count2 = localStorage.getItem("count2") ? parseInt(localStorage.getItem("count2"), 10) : 0;
   const count1Element = document.getElementById("count1");
@@ -81,7 +82,7 @@
       localStorage.setItem("count1", count1);
     } else if (counter === 2) {
       count2++;
-      count2Element.innerHTML = count2.toString();
+           count2Element.innerHTML = count2.toString();
       localStorage.setItem("count2", count2);
     }
   }
@@ -104,3 +105,4 @@
 </script>
 </body>
 </html>
+
