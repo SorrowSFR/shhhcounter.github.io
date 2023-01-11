@@ -1,30 +1,114 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Login Page</title>
+    <title>Counters</title>
+    <style>
+      /* Set the background color to a dark blue */
+      body {
+        background-color: #0077c9;
+      }
+
+      /* Center the counters on the screen */
+      .counters {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      /* Style the counter boxes */
+      .counter-box {
+        width: 200px;
+        height: 200px;
+        padding: 20px;
+        margin: 10px;
+        background-color: white;
+        color: #0077c9;
+        text-align: center;
+        border-radius: 25px;
+        box-shadow: 5px 5px 10px gray;
+      }
+
+      /* Style the heading */
+      h1 {
+        font-size: 30px;
+        color: #0077c9;
+        margin-top: 50px;
+      }
+
+      /* Style the buttons */
+      .counter-box button {
+        width: 60px;
+        height: 30px;
+        margin: 10px;
+        padding: 5px;
+        font-size: 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 15px;
+      }
+
+      .counter-box button.decrement {
+        background-color: #f44336;
+      }
+    </style>
   </head>
   <body>
-    <form onsubmit="return checkForm(this);">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username">
-      <br>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password">
-      <br><br>
-      <input type="submit" value="Submit">
-    </form>
-    <script>
-      function checkForm(form) {
-        if(form.username.value == "USER01" && form.password.value == "fiddle") {
-          alert("Access granted!");
-          localStorage.setItem("loggedIn", "true");
-          window.location.href = "https://sorrowsfr.github.io/counter.html";
-          return true;
-        } else {
-          alert("Access denied. Incorrect username or password.");
-          return false;
+    <div class="counters">
+      <div class="counter-box">
+        <h1>Counter 1: <span id="count1">0</span></h1>
+        <button onclick="increment(1)">+1</button>
+        <button class="decrement" onclick="decrement(1)">-1</button>
+      </div>
+      <div class="counter-box">
+        <h1>Counter 2: <span id="count2">0</span></h1>
+        <button onclick="increment(2)">+1</button>
+        <button class="decrement" onclick="decrement(2)">-1</button>
+      </div>
+    </div>
+        <script>
+    // check if there are already existing counts stored in localStorage
+      if (localStorage.getItem("count1")) {
+        count1 = parseInt(localStorage.getItem("count1"));
+      }
+      if (localStorage.getItem("count2")) {
+        count2 = parseInt(localStorage.getItem("count2"));
+      }
+      // update the counter to reflect the stored count
+      const count1Element = document.getElementById("count1");
+      count1Element.innerHTML = count1;
+      const count2Element = document.getElementById("count2");
+      count2Element.innerHTML = count2;
+
+      function increment(counter) {
+        if(counter === 1){
+          count1++;
+          localStorage.setItem("count1", count1);
+          count1Element.innerHTML = count1;
+        }else if(counter === 2){
+          count2++;
+          localStorage.setItem("count2", count2);
+          count2Element.innerHTML = count2;
+        }
+      }
+      
+      function decrement(counter) {
+        if(counter === 1){
+          if(count1>0){
+            count1--;
+            localStorage.setItem("count1", count1);
+            count1Element.innerHTML = count1;
+          }
+        }else if(counter === 2){
+          if(count2>0){
+            count2--;
+            localStorage.setItem("count2", count2);
+            count2Element.innerHTML = count2;
+          }
         }
       }
     </script>
-  </body>
+</body>
 </html>
