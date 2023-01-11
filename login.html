@@ -3,36 +3,33 @@
   <head>
     <title>Counters</title>
     <style>
-      /* Set the background color to a dark blue */
+      /* Set the background color for the theme */
       body {
-        background-color: #0077c9;
+        background-color: #68A5CC;
       }
 
-      /* Center the counters on the screen */
-      .counters {
+      /* Style the counter boxes */
+      .counter-container {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
       }
-
-      /* Style the counter boxes */
       .counter-box {
         width: 200px;
         height: 200px;
         padding: 20px;
         margin: 10px;
-        background-color: white;
-        color: #0077c9;
+        background-color: #F9CC9D;
+        color: #68A5CC;
         text-align: center;
         border-radius: 25px;
-        box-shadow: 5px 5px 10px gray;
       }
 
       /* Style the heading */
       h1 {
         font-size: 30px;
-        color: #0077c9;
+        color: #68A5CC;
         margin-top: 50px;
       }
 
@@ -43,7 +40,7 @@
         margin: 10px;
         padding: 5px;
         font-size: 20px;
-        background-color: #4caf50;
+        background-color: #4CAF50;
         color: white;
         border: none;
         cursor: pointer;
@@ -51,12 +48,12 @@
       }
 
       .counter-box button.decrement {
-        background-color: #f44336;
+        background-color: #F44336;
       }
     </style>
   </head>
   <body>
-    <div class="counters">
+    <div class="counter-container">
       <div class="counter-box">
         <h1>Counter 1: <span id="count1">0</span></h1>
         <button onclick="increment(1)">+1</button>
@@ -68,47 +65,42 @@
         <button class="decrement" onclick="decrement(2)">-1</button>
       </div>
     </div>
-        <script>
-    // check if there are already existing counts stored in localStorage
-      if (localStorage.getItem("count1")) {
-        count1 = parseInt(localStorage.getItem("count1"));
-      }
-      if (localStorage.getItem("count2")) {
-        count2 = parseInt(localStorage.getItem("count2"));
-      }
-      // update the counter to reflect the stored count
+    <script>
+      let count1 = localStorage.getItem("count1") ? parseInt(localStorage.getItem("count1"), 10) : 0;
+      let count2 = localStorage.getItem("count2") ? parseInt(localStorage.getItem("count2"), 10) : 0;
       const count1Element = document.getElementById("count1");
-      count1Element.innerHTML = count1;
       const count2Element = document.getElementById("count2");
+      
+      count1Element.innerHTML = count1;
       count2Element.innerHTML = count2;
 
       function increment(counter) {
-        if(counter === 1){
+        if (counter === 1) {
           count1++;
-          localStorage.setItem("count1", count1);
           count1Element.innerHTML = count1;
-        }else if(counter === 2){
-          count2++;
-          localStorage.setItem("count2", count2);
+          localStorage.setItem("count1", count1);
+        } else if (counter === 2) {          count2++;
           count2Element.innerHTML = count2;
+          localStorage.setItem("count2", count2);
         }
       }
       
       function decrement(counter) {
-        if(counter === 1){
+        if (counter === 1) {
           if(count1>0){
             count1--;
-            localStorage.setItem("count1", count1);
             count1Element.innerHTML = count1;
+            localStorage.setItem("count1", count1);
           }
-        }else if(counter === 2){
+        } else if (counter === 2) {
           if(count2>0){
             count2--;
-            localStorage.setItem("count2", count2);
             count2Element.innerHTML = count2;
+            localStorage.setItem("count2", count2);
           }
         }
       }
     </script>
-</body>
+  </body>
 </html>
+
