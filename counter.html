@@ -64,32 +64,43 @@
     </style>
   </head>
   <body>
-    <script>
-      // check if user is logged in
-      if(localStorage.getItem("loggedIn") !== "true") {
-        alert("You must log in first.");
-        window.location.replace("login.html");
-      }
-      
-      let counter1 = 0;
-      let counter2 = 0;
-      function incrementCounter1() {
-        counter1++;
-        document.getElementById("counter1Display").innerHTML = counter1;
-      }
-      function decrementCounter1() {
-        counter1--;
-        document.getElementById("counter1Display").innerHTML = counter1;
-      }
-      function incrementCounter2() {
-        counter2++;
-        document.getElementById("counter2Display").innerHTML = counter2;
-      }
-      function decrementCounter2() {
-        counter2--;
-        document.getElementById("counter2Display").innerHTML = counter2;
-      }
-    </script>
+<script>
+  // check if user is logged in
+  if(localStorage.getItem("loggedIn") !== "true") {
+    alert("You must log in first.");
+    window.location.replace("login.html");
+  }
+
+  let counter1 = localStorage.getItem("counter1") || 0;
+  let counter2 = localStorage.getItem("counter2") || 0;
+  document.getElementById("counter1Display").innerHTML = counter1;
+  document.getElementById("counter2Display").innerHTML = counter2;
+
+  function incrementCounter1() {
+    counter1++;
+    localStorage.setItem("counter1", counter1);
+    document.getElementById("counter1Display").innerHTML = counter1;
+  }
+
+  function decrementCounter1() {
+    counter1--;
+    localStorage.setItem("counter1", counter1);
+    document.getElementById("counter1Display").innerHTML = counter1;
+  }
+
+  function incrementCounter2() {
+    counter2++;
+    localStorage.setItem("counter2", counter2);
+    document.getElementById("counter2Display").innerHTML = counter2;
+  }
+
+  function decrementCounter2() {
+    counter2--;
+    localStorage.setItem("counter2", counter2);
+    document.getElementById("counter2Display").innerHTML = counter2;
+  }
+</script>
+
     <div>
         <div class="counter-box counter-1">
             <h2>Counter 1</h2>
