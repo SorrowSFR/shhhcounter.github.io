@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Counter Page</title>
+  </head>
+  <body>
+    <script>
+      // check if user is logged in
+      if(localStorage.getItem("loggedIn") !== "true") {
+        alert("You must log in first.");
+        window.location.replace("login.html");
+      }
+      
+      let counter = 0;
+      function incrementCounter() {
+        counter++;
+        document.getElementById("counterDisplay").innerHTML = counter;
+      }
+    </script>
+    <h1>Welcome to the Counter Page</h1>
+    <p>Counter: <span id="counterDisplay">0</span></p>
+    <button onclick="incrementCounter()">Increment</button>
+  </body>
+</html>
